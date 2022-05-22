@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +26,11 @@ public class EmailGroup {
     private String name;
 
     @ToString.Exclude
-    @ManyToMany //(mappedBy = "emailGroups")
+    @ManyToMany
+    @JoinTable(name = "Email_Group_Subscriptions",
+    joinColumns = @JoinColumn(name="group_id"),
+     inverseJoinColumns = @JoinColumn(name="employee_id")
+     )
     private List<Employee> members;
 
 }
