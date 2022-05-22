@@ -1,0 +1,4 @@
+One to one by default fetches EAGER
+One to Many by default fetches LAZY
+Many to Many by default fetches LAZY
+
