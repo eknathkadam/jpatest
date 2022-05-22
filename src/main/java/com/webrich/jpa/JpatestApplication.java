@@ -26,7 +26,7 @@ public class JpatestApplication {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		Employee emp = entityManager.find(Employee.class, 1);
+		Employee emp = entityManager.find(Employee.class, 2);
 
 		EntityTransaction transaction = entityManager.getTransaction();
 
