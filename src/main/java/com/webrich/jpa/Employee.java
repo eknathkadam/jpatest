@@ -1,5 +1,6 @@
 package com.webrich.jpa;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,7 +46,11 @@ public class Employee {
     private List<PayStub> payStubs;
 
     @ManyToMany (mappedBy = "members")
-    private List<EmailGroup> emailGroups;
+    private List<EmailGroup> emailGroups = new ArrayList<>();
+
+    public void addEmailSubscription(EmailGroup group){
+        this.emailGroups.add(group);
+    }
 
     public Employee addPayStub(PayStub stub){
         this.payStubs.add(stub);

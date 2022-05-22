@@ -1,5 +1,6 @@
 package com.webrich.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -31,6 +32,9 @@ public class EmailGroup {
     joinColumns = @JoinColumn(name="group_id"),
      inverseJoinColumns = @JoinColumn(name="employee_id")
      )
-    private List<Employee> members;
+    private List<Employee> members = new ArrayList<>();
 
+    public void addMember(Employee employee){
+        this.members.add(employee);
+    }
 }
