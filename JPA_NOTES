@@ -1,4 +1,19 @@
-One to one by default fetches EAGER
-One to Many by default fetches LAZY
-Many to Many by default fetches LAZY
+FETCH RULES
+
+	One to one by default fetches EAGER
+	One to Many by default fetches LAZY
+	Many to Many by default fetches LAZY
+
+One needs to be careful about the way cascade is defined
+
+In this example, email groups need to be independent. So they should define the mapped by column in many to many relationship
+
+And the definition of join tables and columns need to be in Employee
+
+The one to one relationship doesnt by default remove when the other entity is removed
+In many to many relationship, the default is to remove
+And in one to many relationship the cascase needs to be defined.
+
+In this schenario, the cascade needs to be defined to paystubs 	
+
 

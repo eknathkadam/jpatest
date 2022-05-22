@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -41,11 +44,15 @@ public class Employee {
     @OneToOne //(fetch = FetchType.LAZY)
     private AccessCard card;
 
-    @OneToMany (mappedBy = "employee")
+    @OneToMany (mappedBy = "employee", cascade = CascadeType.REMOVE)
    // @JoinColumn (name = "paystub_for")
     private List<PayStub> payStubs;
 
-    @ManyToMany (mappedBy = "members")
+    @ManyToMany 
+    @JoinTable(name = "Email_Group_Subscriptions",
+    joinColumns = @JoinColumn(name="employee_id"),
+     inverseJoinColumns = @JoinColumn(name="group_id")
+     )
     private List<EmailGroup> emailGroups = new ArrayList<>();
 
     public void addEmailSubscription(EmailGroup group){

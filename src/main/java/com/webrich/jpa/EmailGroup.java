@@ -27,11 +27,8 @@ public class EmailGroup {
     private String name;
 
     @ToString.Exclude
-    @ManyToMany
-    @JoinTable(name = "Email_Group_Subscriptions",
-    joinColumns = @JoinColumn(name="group_id"),
-     inverseJoinColumns = @JoinColumn(name="employee_id")
-     )
+    @ManyToMany (mappedBy = "emailGroups" )
+    
     private List<Employee> members = new ArrayList<>();
 
     public void addMember(Employee employee){
