@@ -23,6 +23,7 @@ public class JpaReadTest {
 
         AccessCard card = entityManager.find(AccessCard.class, 2);
 		System.out.println("AccessCard found" + card);
+		
 		entityManager.close();
 		entityManagerFactory.close();
 

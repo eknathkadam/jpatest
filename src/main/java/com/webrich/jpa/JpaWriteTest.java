@@ -11,11 +11,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JpatestApplication {
+public class JpaWriteTest {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(JpatestApplication.class, args);
+		SpringApplication.run(JpaWriteTest.class, args);
 
 		AccessCard card1 = new AccessCard(0, new Date(), true, "1.0.0", null);
 		AccessCard card2 = new AccessCard(0, new Date(), true, "1.0.0", null);
@@ -30,16 +30,22 @@ public class JpatestApplication {
 		card2.setOwner(emp2);
 		card3.setOwner(emp3);
 
+		PayStub stub1 = new PayStub(0, new Date(), new Date(), 1000,emp1);
+		PayStub stub2 = new PayStub(0, new Date(), new Date(), 1500,emp1);
+		PayStub stub3 = new PayStub(0, new Date(), new Date(), 2000,emp1);
+
+		PayStub stub4 = new PayStub(0, new Date(), new Date(), 1000,emp2);
+		PayStub stub6 = new PayStub(0, new Date(), new Date(), 1500,emp2);
+		PayStub stub5 = new PayStub(0, new Date(), new Date(), 2000,emp2);
+
+		PayStub stub7 = new PayStub(0, new Date(), new Date(), 1000,emp3);
+		PayStub stub8 = new PayStub(0, new Date(), new Date(), 1500,emp3);
+		PayStub stub9 = new PayStub(0, new Date(), new Date(), 2000,emp3);
+
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		// Employee emp = entityManager.find(Employee.class, 2);
-
 		EntityTransaction transaction = entityManager.getTransaction();
-
-		// saving/updating the employee objecting
-		// emp.setAge(42);
-
 		transaction.begin();
 
 		entityManager.persist(card1);
@@ -50,6 +56,16 @@ public class JpatestApplication {
 		entityManager.persist(emp1);
 		entityManager.persist(emp2);
 		entityManager.persist(emp3);
+
+		entityManager.persist(stub1);
+		entityManager.persist(stub2);
+		entityManager.persist(stub3);
+		entityManager.persist(stub4);
+		entityManager.persist(stub5);
+		entityManager.persist(stub6);
+		entityManager.persist(stub7);
+		entityManager.persist(stub8);
+		entityManager.persist(stub9);
 
 		// entityManager.remove(emp);
 		transaction.commit();
