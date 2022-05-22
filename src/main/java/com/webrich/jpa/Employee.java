@@ -44,7 +44,7 @@ public class Employee {
    // @JoinColumn (name = "paystub_for")
     private List<PayStub> payStubs;
 
-    @ManyToMany
+    @ManyToMany (mappedBy = "members")
     private List<EmailGroup> emailGroups;
 
     public Employee addPayStub(PayStub stub){
