@@ -2,7 +2,6 @@ package com.webrich.jpa;
 
 import java.util.Date;
 
-import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +11,7 @@ import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor
@@ -23,6 +23,7 @@ public class PayStub {
     private Date payPeriodEnd;
     private float salary;
 
+    @ToString.Exclude
     @ManyToOne 
     private Employee employee;
 

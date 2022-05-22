@@ -18,12 +18,15 @@ public class JpaReadTest {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		 Employee emp = entityManager.find(Employee.class, 2);
-		 System.out.println("Employee found" + emp);
+		//PayStub stub = entityManager.find(PayStub.class, 4);
+		//System.out.println(stub.getEmployee());
+		 
+		Employee emp = entityManager.find(Employee.class, 2);
+		System.out.println("Employee found" + emp);
 
-        AccessCard card = entityManager.find(AccessCard.class, 2);
-		System.out.println("AccessCard found" + card);
-		
+        // AccessCard card = entityManager.find(AccessCard.class, 2);
+		// System.out.println("AccessCard found" + card);
+
 		entityManager.close();
 		entityManagerFactory.close();
 

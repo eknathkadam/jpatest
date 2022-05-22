@@ -1,12 +1,14 @@
 package com.webrich.jpa;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,4 +38,7 @@ public class Employee {
 
     @OneToOne //(fetch = FetchType.LAZY)
     private AccessCard card;
+
+    @OneToMany (mappedBy = "employee")
+    private List<PayStub> payStubs;
 }
