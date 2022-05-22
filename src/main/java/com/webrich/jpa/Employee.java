@@ -1,8 +1,14 @@
 package com.webrich.jpa;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +27,9 @@ public class Employee {
     private int age;
     @Column(unique = true, length = 10, nullable=false)
     private String ssn;
+    @Temporal(TemporalType.TIME)
+    private Date dob;
+
+    @Enumerated(EnumType.STRING)
+    private EmployeeType employeeType;
 }
