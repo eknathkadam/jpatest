@@ -17,29 +17,28 @@ public class JpatestApplication {
 
 		SpringApplication.run(JpatestApplication.class, args);
 
-		AccessCard card1 = new AccessCard(0, new Date(), true, "1.0.0");
-		AccessCard card2 = new AccessCard(0, new Date(), true, "1.0.0");
-		AccessCard card3 = new AccessCard(0, new Date(), true, "1.2.0");
+		AccessCard card1 = new AccessCard(0, new Date(), true, "1.0.0", null);
+		AccessCard card2 = new AccessCard(0, new Date(), true, "1.0.0", null);
+		AccessCard card3 = new AccessCard(0, new Date(), true, "1.2.0", null);
 
-		Employee emp1 = new Employee(1, "eknath", 42, "610553594", new
-		Date(),EmployeeType.CONTRACTOR,card1);
+		Employee emp1 = new Employee(1, "eknath", 42, "610553594", new Date(), EmployeeType.CONTRACTOR, card1);
 
-		Employee emp2 = new Employee(2, "Girish", 28, "610553595",new
-		Date(),EmployeeType.FULL_TIME,card2);
-		Employee emp3 = new Employee(3, "Nirav", 45, "610553596",new
-		Date(),EmployeeType.PAYROLL_EXEMPT,card3);
+		Employee emp2 = new Employee(2, "Girish", 28, "610553595", new Date(), EmployeeType.FULL_TIME, card2);
+		Employee emp3 = new Employee(3, "Nirav", 45, "610553596", new Date(), EmployeeType.PAYROLL_EXEMPT, card3);
 
-		
+		card1.setOwner(emp1);
+		card2.setOwner(emp2);
+		card3.setOwner(emp3);
 
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		//Employee emp = entityManager.find(Employee.class, 2);
+		// Employee emp = entityManager.find(Employee.class, 2);
 
 		EntityTransaction transaction = entityManager.getTransaction();
 
 		// saving/updating the employee objecting
-		//emp.setAge(42);
+		// emp.setAge(42);
 
 		transaction.begin();
 
@@ -52,12 +51,12 @@ public class JpatestApplication {
 		entityManager.persist(emp2);
 		entityManager.persist(emp3);
 
-		//entityManager.remove(emp);
+		// entityManager.remove(emp);
 		transaction.commit();
 		entityManager.close();
 		entityManagerFactory.close();
 
-		System.out.println("Employee found" + emp1);
+		// System.out.println("Employee found" + emp1);
 
 	}
 

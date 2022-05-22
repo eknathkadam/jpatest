@@ -1,10 +1,7 @@
 package com.webrich.jpa;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.springframework.boot.SpringApplication;
@@ -21,12 +18,14 @@ public class JpaReadTest {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		Employee emp = entityManager.find(Employee.class, 2);
+		 Employee emp = entityManager.find(Employee.class, 2);
+		 System.out.println("Employee found" + emp);
 
+        AccessCard card = entityManager.find(AccessCard.class, 2);
+		System.out.println("AccessCard found" + card);
 		entityManager.close();
 		entityManagerFactory.close();
 
-		System.out.println("Employee found" + emp);
 
 	}
 

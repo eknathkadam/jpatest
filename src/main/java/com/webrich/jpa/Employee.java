@@ -15,10 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
+@Data @Entity @AllArgsConstructor @NoArgsConstructor
 
 //@Table(name="EMPLOYEE_DATA", schema = "", catalog = "")
 public class Employee {    
@@ -37,6 +34,6 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeType employeeType;
 
-    @OneToOne
+    @OneToOne //(fetch = FetchType.LAZY)
     private AccessCard card;
 }
