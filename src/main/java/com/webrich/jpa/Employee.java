@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -40,5 +41,17 @@ public class Employee {
     private AccessCard card;
 
     @OneToMany (mappedBy = "employee")
+   // @JoinColumn (name = "paystub_for")
     private List<PayStub> payStubs;
+
+    @ManyToMany
+    private List<EmailGroup> emailGroups;
+
+    public Employee addPayStub(PayStub stub){
+        this.payStubs.add(stub);
+        return this;
+    }
+
+    
+
 }
