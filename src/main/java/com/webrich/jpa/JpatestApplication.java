@@ -34,6 +34,8 @@ public class JpatestApplication {
 		 entityManager.persist(emp);
 		
 		 transaction.commit();
+		 entityManager.close();
+		 entityManagerFactory.close();
 
 		 System.out.println("Employee found"+emp);
 
