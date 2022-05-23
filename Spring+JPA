@@ -1,0 +1,12 @@
+
+Spring and JPA collab
+
+@PersistenceUnit
+private EntityManagerFactory emf;
+
+Always call persist and other methods
+@PostConstruct for dependency injection to work
+
+
+
+

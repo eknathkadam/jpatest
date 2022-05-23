@@ -3,20 +3,31 @@ package com.webrich.jpa;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class JpaWriteTest {
+	@PersistenceUnit
+    private EntityManagerFactory entityManagerFactory;
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(JpaWriteTest.class, args);
+		
+		//SpringApplication.run(JpaWriteTest.class, args);
+
+		
+
+	}
+
+	//@PostConstruct
+	public void start(){
 
 		AccessCard card1 = new AccessCard(0, new Date(), true, "1.0.0", null);
 		AccessCard card2 = new AccessCard(0, new Date(), true, "1.0.0", null);
@@ -66,7 +77,7 @@ public class JpaWriteTest {
 
 
 
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
+		//EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myApp");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		EntityTransaction transaction = entityManager.getTransaction();
@@ -101,7 +112,6 @@ public class JpaWriteTest {
 		entityManagerFactory.close();
 
 		// System.out.println("Employee found" + emp1);
-
 	}
 
 }
