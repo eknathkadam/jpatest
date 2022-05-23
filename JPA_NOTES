@@ -14,6 +14,8 @@ The one to one relationship doesnt by default remove when the other entity is re
 In many to many relationship, the default is to remove
 And in one to many relationship the cascase needs to be defined.
 
-In this schenario, the cascade needs to be defined to paystubs 	
+In this scenario, the cascade needs to be defined to paystubs 	
+
+PersistenceContext caches all entities and only persists them after commit is called on entity manager
 
 
