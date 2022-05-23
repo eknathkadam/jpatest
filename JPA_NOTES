@@ -18,4 +18,20 @@ In this scenario, the cascade needs to be defined to paystubs
 
 PersistenceContext caches all entities and only persists them after commit is called on entity manager
 
+Entity lifecycle when called persist()
+Transient --> Managed --> Persist in DB
+
+When called remove()
+	-->Removed --> Deleted from DB
+If called persist again
+	-->Removed --> Managed
+When called flush()
+	-->Managed -->Forced Write in DB
+ -->detach removes the entity from managed
+-->Merge() will make a detached entity as managed 
+-->Clear() works similar to detach but for all the managed entities instead of one entity
+
+-->When a found entity is changed it becomes Dirty, calling refresh() will clean a dirty entity. The managed entity then reflects the state as it is in corrosponding row in the db table
+
+
 
