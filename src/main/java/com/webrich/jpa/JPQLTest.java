@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 
 import org.springframework.boot.SpringApplication;
@@ -15,10 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JPQLTest {
 
-    // @PersistenceUnit
-    // private EntityManagerFactory entityManagerFactory;
-
-    @PersistenceContext
+  
+   @PersistenceContext
     private EntityManager entityManager;
     public static void main(String[] args) {
 
@@ -35,9 +31,14 @@ public class JPQLTest {
         TypedQuery<Employee> query = entityManager.createQuery("Select e from Employee e", Employee.class);
 
         List<Employee> employeeList = query.getResultList();
-        System.out.println(employeeList);
 
-        //entityManager.close();
+        for (Employee employee : employeeList) {
+			List<EmailGroup> emailGroup = employee.getEmailGroups();
+			List<PayStub>stubs = employee.getPayStubs();
+			System.out.println(employee);
+		}
+        
+        entityManager.close();
         //entityManagerFactory.close();
     }
 }

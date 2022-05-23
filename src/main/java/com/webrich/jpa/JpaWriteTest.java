@@ -14,13 +14,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
 public class JpaWriteTest {
-	@PersistenceUnit
+	
+	//@PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
 
 	public static void main(String[] args) {
 
 		
-		//SpringApplication.run(JpaWriteTest.class, args);
+		SpringApplication.run(JpaWriteTest.class, args);
 
 		
 

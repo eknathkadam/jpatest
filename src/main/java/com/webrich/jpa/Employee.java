@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -48,7 +49,7 @@ public class Employee {
    // @JoinColumn (name = "paystub_for")
     private List<PayStub> payStubs;
 
-    @ManyToMany 
+    @ManyToMany
     @JoinTable(name = "Email_Group_Subscriptions",
     joinColumns = @JoinColumn(name="employee_id"),
      inverseJoinColumns = @JoinColumn(name="group_id")
