@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
 public class JpaReadTest {
@@ -30,7 +29,7 @@ public class JpaReadTest {
 		EmailGroup group = entityManager.find(EmailGroup.class, 13);
 		System.out.println("EmailGroup found" + group);
 		System.out.println("******************************************");
-		System.out.println("Employees found" + group.getMembers());
+		//System.out.println("Employees found" + group.getMembers());
 
 
 		entityManager.close();

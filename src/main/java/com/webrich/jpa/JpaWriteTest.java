@@ -8,14 +8,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceUnit;
+import javax.transaction.Transactional;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//@SpringBootApplication
+@SpringBootApplication
+@EnableTransactionManagement
+
 public class JpaWriteTest {
 	
-	//@PersistenceUnit
+	@PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
 
 	public static void main(String[] args) {
@@ -27,7 +31,8 @@ public class JpaWriteTest {
 
 	}
 
-	//@PostConstruct
+	@PostConstruct
+	@Transactional
 	public void start(){
 
 		AccessCard card1 = new AccessCard(0, new Date(), true, "1.0.0", null);
